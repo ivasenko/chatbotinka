@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const bodyParser = require('bodyParser');
+const bodyParser = require('body-parser');
 const request = require('request');
 
 const app = express()
@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 // facebook
 
 app.get('/webhook/', function(req, res) {
-    if (req.query['hub.verify_token'] === 'irenbytes') {
+    if (req.query['hub.verify_token'] === 'blondiebytes') {
         res.send(req.query['hub.challenge'])
     }
     res.send('wrong token')
