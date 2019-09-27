@@ -33,7 +33,7 @@ app.post('/webhook/', function(req,res) {
         let event = messaging_events[i];
         let sender = event.sender.id;
 
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('GET', 'api.openweathermap.org/data/2.5/weather?q=London', false);
         xhr.send();
         if (xhr.status !== 200) {
