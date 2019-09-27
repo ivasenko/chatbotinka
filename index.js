@@ -36,11 +36,10 @@ app.post('/webhook/', function(req,res) {
         if (event.message && event.message.text) {
             let text = event.message.text;
 
+            sendText(sender, "Text echo: " + text.substring(0, 100));
 
             if (text.includes("hello")) {
                 sendText(sender, "Text echo: " + "good morning");
-            } else {
-                sendText(sender, "Text echo: " + text.substring(0, 100));
             }
         }
     }
