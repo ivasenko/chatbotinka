@@ -33,23 +33,15 @@ app.post('/webhook/', function(req,res) {
         let event = messaging_events[i];
         let sender = event.sender.id;
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'api.openweathermap.org/data/2.5/weather?q=London', false);
-        xhr.send();
-        if (xhr.status !== 200) {
-            console.log( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-        } else {
-            console.log( xhr.responseText );
-        }
-
         if (event.message && event.message.text) {
             let text = event.message.text;
 
 
             if (text.includes("hello")) {
                 sendText(sender, "Text echo: " + "good morning" + xhr.responseText);
+            } else {
+                sendText(sender, "Text echo: " + text.substring(0, 100));
             }
-            sendText(sender, "Text echo: " + text.substring(0, 100));
         }
     }
 
